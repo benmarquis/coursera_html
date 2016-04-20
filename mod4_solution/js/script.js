@@ -12,16 +12,16 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 (function (global) {
 
 var dc = {};
-
-var homeHtmlUrl = "file:C:/Users/bmarquis/Documents/workspace/coursera_html/mod4_solution/snippets/home-snippet.html";
+var web = ""
+var homeHtmlUrl = web + "snippets/home-snippet.html";
 var allCategoriesUrl = 
   "http://davids-restaurant.herokuapp.com/categories.json";
-var categoriesTitleHtml = "snippets/categories-title-snippet.html";
-var categoryHtml = "snippets/category-snippet.html";
+var categoriesTitleHtml = web + "snippets/categories-title-snippet.html";
+var categoryHtml = web + "snippets/category-snippet.html";
 var menuItemsUrl = 
   "http://davids-restaurant.herokuapp.com/menu_items.json?category=";
-var menuItemsTitleHtml = "snippets/menu-items-title.html";
-var menuItemHtml = "snippets/menu-item.html";
+var menuItemsTitleHtml = web + "snippets/menu-items-title.html";
+var menuItemHtml = web + "snippets/menu-item.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -116,15 +116,14 @@ function buildAndShowHomeHTML (categories) {
       // it into the home html snippet.
       // 
       // var homeHtmlToInsertIntoMainPage = ....
-      var categoryShortName = category.short_name;
-      console.log(categoryShortName);
+      var categoryShortName = "'" + category.short_name + "'";
       var homeHtml = insertProperty(homeHtml , "randomCategoryShortName", categoryShortName);
-      console.log(homeHtml);
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that. 
       // ....
+      insertHtml("#main-content", homeHtml);
       
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
